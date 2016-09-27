@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "source(\"startup.R\")\n\npageWithSidebar(\n  headerPanel('NBA k-means clustering-simple'),\n  sidebarPanel(\n    selectInput('xcol', 'X Variable', names(df)[c(-1,-2,-3)], selected=names(df)[[13]]),\n    selectInput('ycol', 'Y Variable', names(df)[c(-1,-2,-3)], selected=names(df)[[19]]),\n    numericInput('clusters', 'Cluster count', 3, min = 1, max = 9)\n  ),\n  mainPanel(\n    plotOutput('plot1')\n  )\n)\n\n",
+    "created" : 1474946307809.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "653661311",
+    "id" : "A4DAB408",
+    "lastKnownWriteTime" : 1474947419,
+    "last_content_update" : 1474947419123,
+    "path" : "~/Desktop/shinyTeach/shinyKmeans1/ui.R",
+    "project_path" : "ui.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
