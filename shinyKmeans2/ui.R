@@ -1,14 +1,41 @@
-source("startup.R")
+source("extRa/startup.R")
 
-pageWithSidebar(
-  headerPanel('NBA k-means clustering-simple'),
-  sidebarPanel(
-    selectInput('xcol', 'X Variable', names(df)[c(-1,-2,-3)], selected=names(df)[[13]]),
-    selectInput('ycol', 'Y Variable', names(df)[c(-1,-2,-3)], selected=names(df)[[19]]),
-    numericInput('clusters', 'Cluster count', 4, min = 1, max = 9)
-  ),
-  mainPanel(
-    plotOutput('plot1')
-  )
+shinyUI(
+    navbarPage(
+        HTML("<img src='harvard-logo.png'/>"),
+
+        tabPanel("Visualize",
+                 fluidPage(
+                     pageWithSidebar(
+                         headerPanel('ADVANCED'),
+                         sidebarPanel(
+                             selectInput('xcol', 'X Variable', names(df)[c(-1,-2,-3,-5)],
+                                         selected=names(df)[[13]], selectize = TRUE),
+                             selectInput('ycol', 'Y Variable', names(df)[c(-1,-2,-3,-5)],
+                                         selected=names(df)[[19]], selectize = TRUE),
+                             numericInput('clusters', 'Cluster count', 4, min = 1, max = 9)
+                         ),
+                         mainPanel(
+                             plotlyOutput('plot1'),
+                             plotlyOutput('brush')
+                         )
+                     )
+                 )
+        ),
+                     
+        tabPanel("Guide",
+            includeMarkdown("www/guide.Rmd")
+        ),
+        
+        ##########
+        # FOOTER
+        ##########
+        
+        theme = shinytheme("cerulean"),
+        footer = HTML(paste0('<P ALIGN=Center>Kmeans2 &copy; <A HREF="mailto:caleblareau@g.harvard.edu">Caleb Lareau</A>')),
+        collapsible = TRUE, 
+        fluid = TRUE,
+        windowTitle = "Kmeans2"
+    )
 )
-
+        

@@ -1,26 +1,36 @@
-source("startup.R")
+source("extRa/startup.R")
 
 function(input, output, session) {
-
-  # Combine the selected variables into a new data frame
-  selectedData <- reactive({
-    df[, c(input$xcol, input$ycol)]
+    
+  # Plot 1
+  output$plot1 <- renderPlotly({
+      
+    key <- row.names(df)
+    dfp <- data.frame(x     = df[,input$xcol],
+                      y     = df[,input$ycol],
+                      clust = as.factor(kmeans(df[,c(input$xcol,input$ycol)], input$clusters)$cluster),
+                      team  = df[,5],
+                      pos   = df[,3],
+                      player= df[,1])
+    
+    plot_ly(dfp, x = x, y = y, mode = "markers", color = clust, key = key,
+        text = paste0("Player:", player, "<br>", "Team: ", team, "<br>", "Position: ", pos)) %>%
+        layout(dragmode = "select")
+  
   })
+  
+  # Plot 2  
 
-  clusters <- reactive({
-    kmeans(selectedData(), input$clusters)
+  output$brush <- renderPlotly({
+      eventdata <- event_data("plotly_selected")
+      if (is.null(eventdata)){
+        return(NULL)
+      } else {
+        positions <- df[eventdata$key,]$Pos
+        ggplot1 <- qplot(positions) + theme_bw()
+        ggplotly(ggplot1)
+      }
   })
-
-  output$plot1 <- renderPlot({
-    palette(c("#E41A1C", "#377EB8", "#4DAF4A", "#984EA3",
-      "#FF7F00", "#FFFF33", "#A65628", "#F781BF", "#999999"))
-
-    par(mar = c(5.1, 4.1, 0, 1))
-    plot(selectedData(),
-         col = clusters()$cluster,
-         pch = 20, cex = 3)
-    points(clusters()$centers, pch = 4, cex = 4, lwd = 4)
-  })
-
+  
 }
 

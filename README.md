@@ -6,7 +6,7 @@ Overview of Shiny apps through two interactive examples.
 ## Useful links
 
 There's a ton of information on Shiny out there, but not all of them are worth your time. Here are my recommendations:
-
+- RStudio [tutorial](http://shiny.rstudio.com/tutorial/lesson1/) is pretty dry but useful if the core concepts are still a bit confusing (Beginner)
 - ~1 hour [YouTube video](https://www.youtube.com/watch?v=Ido56dwDTg8) from [Joe Cheng](https://github.com/jcheng5), one of the main developers of Shiny. (Beginner/Intermediate)
 - [Advanced Shiny tips](http://deanattali.com/blog/advanced-shiny-tips/) from [Dean Attali](http://deanattali.com/aboutme/), one of the better developers of cool features in Shiny. (Intermediate/Advanced)
 - [Shiny gallery](http://shiny.rstudio.com/gallery/) provides all their code along with dozens of sample apps. Sometimes the best way to learn is by example! (Beginner/Intermediate)
