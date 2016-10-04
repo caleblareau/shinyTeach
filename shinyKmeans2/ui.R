@@ -3,7 +3,6 @@ source("extRa/startup.R")
 shinyUI(
     navbarPage(
         HTML("<img src='harvard-logo.png'/>"),
-
         tabPanel("Visualize",
                  fluidPage(
                      pageWithSidebar(
@@ -13,7 +12,11 @@ shinyUI(
                                          selected=names(df)[[13]], selectize = TRUE),
                              selectInput('ycol', 'Y Variable', names(df)[c(-1,-2,-3,-5)],
                                          selected=names(df)[[19]], selectize = TRUE),
-                             numericInput('clusters', 'Cluster count', 4, min = 1, max = 9)
+                             numericInput('clusters', 'Cluster count', 4, min = 1, max = 9),
+                             uiOutput('xmean'), 
+                             conditionalPanel( condition = "input.clusters  == 3",   # This is Javascript
+                                 uiOutput('ymean')
+                             )
                          ),
                          mainPanel(
                              plotlyOutput('plot1'),

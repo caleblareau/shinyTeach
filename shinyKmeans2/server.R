@@ -2,12 +2,23 @@ source("extRa/startup.R")
 
 function(input, output, session) {
     
+  # RenderUI examples
+  output$xmean <- renderText({
+      vals <-  df[,input$xcol]
+      return(paste0("Mean of ",as.character(input$xcol), " is ", as.character(round(mean(vals),2))))
+  })
+  
+  output$ymean <- renderText({
+      vals <-  df[,input$ycol]
+      return(paste0("Mean of ",as.character(input$ycol), " is ", as.character(round(mean(vals),2))))
+  })
+    
   # Plot 1
   output$plot1 <- renderPlotly({
       
     key <- row.names(df)
-    dfp <- data.frame(x     = df[,isolate(input$xcol)],
-                      y     = df[,input$ycol],
+    dfp <- data.frame(x     = df[,isolate(input$xcol)],  # Note the use of `isolate` here
+                      y     = df[,input$ycol],             
                       clust = as.factor(kmeans(df[,c(isolate(input$xcol),input$ycol)], input$clusters)$cluster),
                       team  = df[,5],
                       pos   = df[,3],
