@@ -6,9 +6,9 @@ function(input, output, session) {
   output$plot1 <- renderPlotly({
       
     key <- row.names(df)
-    dfp <- data.frame(x     = df[,input$xcol],
+    dfp <- data.frame(x     = df[,isolate(input$xcol)],
                       y     = df[,input$ycol],
-                      clust = as.factor(kmeans(df[,c(input$xcol,input$ycol)], input$clusters)$cluster),
+                      clust = as.factor(kmeans(df[,c(isolate(input$xcol),input$ycol)], input$clusters)$cluster),
                       team  = df[,5],
                       pos   = df[,3],
                       player= df[,1])
@@ -20,7 +20,6 @@ function(input, output, session) {
   })
   
   # Plot 2  
-
   output$brush <- renderPlotly({
       eventdata <- event_data("plotly_selected")
       if (is.null(eventdata)){
