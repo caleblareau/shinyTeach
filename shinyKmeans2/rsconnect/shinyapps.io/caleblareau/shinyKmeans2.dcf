@@ -2,8 +2,8 @@ name: shinyKmeans2
 account: caleblareau
 server: shinyapps.io
 appId: 129354
-bundleId: 575754
+bundleId: 576467
 url: https://caleblareau.shinyapps.io/shinyKmeans2/
-when: 1475541053.2524
+when: 1475601447.27236
 asMultiple: FALSE
 asStatic: FALSE

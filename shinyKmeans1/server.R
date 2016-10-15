@@ -8,7 +8,7 @@ function(input, output, session) {
   })
 
   clusters <- reactive({
-    kmeans(selectedData(), input$clusters)
+    kmeans(selectedData(), isolate(input$clusters))
   })
 
   output$plot1 <- renderPlot({

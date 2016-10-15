@@ -23,3 +23,27 @@ There's a ton of information on Shiny out there, but not all of them are worth y
 - Sample of Caleb's use [ImmGen ATAC Consortium HTML](https://github.com/buenrostrolab/ImmGen/blob/master/code/ImmGen_chromVar_04Oct.html) and [R script](https://github.com/buenrostrolab/ImmGen/blob/master/code/Immgen_chromVar.R)
 
 
+# Useful code bits
+Chunks of code that I've produced that are generally useful
+
+## Plot all values of a data frame in plotly interactive scatter plot
+
+```
+output$plot1 <- renderPlotly({
+  
+  anno <- apply(sapply(colnames(df), function(name){paste0(name, ": ", df[,name])}), 1, paste, collapse = "<br>")
+  plot.df <- data.frame(df[,input$xcol],
+						df[,input$ycol],
+						df[,input$color],
+						Annotation = anno)
+  
+  # Add column names
+  colnames(plot.df) <- c("x", "y","Color" , "Annotation")
+  plot_ly(plot.df, x = x, y = y, mode = "markers", color = "Color", source = "subset", text = Annotation,
+		  marker = list(size = 15), colors = rev(RColorBrewer::brewer.pal(11, "Spectral"))) %>%
+	  layout(title = paste(input$xcol, "vs ", input$ycol),
+			 xaxis = list(title = input$xcol),
+			 yaxis = list(title = input$ycol),
+			 dragmode =  "select")
+})
+```
