@@ -1,5 +1,5 @@
 # shinyTeach
-By Caleb Lareau
+By [Caleb Lareau](mailto:caleblareau@g.harvard.edu)
 
 - Overview of R/Shiny apps through two interactive examples. 
 - Introduction to HTML widgets for light weight data sharing.
@@ -39,7 +39,7 @@ output$plot1 <- renderPlotly({
   
   # Add column names
   colnames(plot.df) <- c("x", "y","Color" , "Annotation")
-  plot_ly(plot.df, x = x, y = y, mode = "markers", color = "Color", source = "subset", text = Annotation,
+  plot_ly(plot.df, x = ~x, y = ~y, mode = "markers", color = "Color", source = "subset", text = ~Annotation,
 		  marker = list(size = 15), colors = rev(RColorBrewer::brewer.pal(11, "Spectral"))) %>%
 	  layout(title = paste(input$xcol, "vs ", input$ycol),
 			 xaxis = list(title = input$xcol),
