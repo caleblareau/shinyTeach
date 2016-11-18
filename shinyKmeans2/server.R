@@ -24,8 +24,8 @@ function(input, output, session) {
                       pos   = df[,3],
                       player= df[,1])
     
-    plot_ly(dfp, x = x, y = y, mode = "markers", color = clust, key = key,
-        text = paste0("Player:", player, "<br>", "Team: ", team, "<br>", "Position: ", pos)) %>%
+    plot_ly(dfp, x = ~x, y = ~y, mode = "markers", color = ~clust, key = ~key,
+        text = paste0("Player:", dfp$player, "<br>", "Team: ", dfp$team, "<br>", "Position: ", dfp$pos)) %>%
         layout(dragmode = "select")
   
   })
