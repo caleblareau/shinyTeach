@@ -14,13 +14,12 @@ There's a ton of information on Shiny out there, but not all of them are worth y
 - [Advanced Shiny tips](http://deanattali.com/blog/advanced-shiny-tips/) from [Dean Attali](http://deanattali.com/aboutme/), one of the better developers of cool features in Shiny. (Intermediate/Advanced)
 - [Shiny gallery](http://shiny.rstudio.com/gallery/) provides all their code along with dozens of sample apps. Sometimes the best way to learn is by example! (Beginner/Intermediate)
 - [Plotly gallery](https://plot.ly/r/shiny-gallery/) more examples but rendered through [plotly](https://plot.ly/), which makes the data highly interactive. (Intermediate/Advanced)
-- Shameless plugs for two of my mature Shiny apps, an epigenomics browser, [DNAlandscapeR](http://dnalandscaper.aryeelab.org) and [scHemer](https://caleblareau.shinyapps.io/scHemer/)
+- Shameless plugs for two of my mature Shiny apps, an epigenomics browser, [DNAlandscapeR](http://dnalandscaper.aryeelab.org) and [scHemer](http://schemer.buenrostrolab.com)
 
 ## R/HTMLwidgets
 - Basic [overview/gallery](http://www.htmlwidgets.org/) from their sight
 - Making [HTML files from RStudio](https://support.rstudio.com/hc/en-us/articles/200552276-Creating-Notebooks-from-R-Scripts)
 - [Rendering HTML files](http://stackoverflow.com/questions/8446218/how-to-see-an-html-page-on-github-as-a-normal-rendered-html-page-to-see-preview) on (personal) github. 
-- Sample of Caleb's use [ImmGen ATAC Consortium HTML](https://github.com/buenrostrolab/ImmGen/blob/master/code/ImmGen_chromVar_04Oct.html) and [R script](https://github.com/buenrostrolab/ImmGen/blob/master/code/Immgen_chromVar.R)
 
 
 # Useful code bits
